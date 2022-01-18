@@ -12,10 +12,10 @@ function AddEdit({ history, match }) {
     
     // form validation rules 
     const validationSchema = Yup.object().shape({
-        name: Yup.string()
-            .required('Name is required'),
-        detail: Yup.string()
-            .required('Detail is required'),
+        // name: Yup.string()
+        //     .required('Name is required'),
+        // detail: Yup.string()
+        //     .required('Detail is required'),
     });
 
     // functions to build form returned by useForm() hook
@@ -36,7 +36,10 @@ function AddEdit({ history, match }) {
                 alertService.success('Product added', { keepAfterRouteChange: true });
                 history.push('.');
             })
-            .catch(alertService.error);
+            .catch(err => {
+                console.log('err = ', err.status);
+                alertService.error;
+            });
     }
 
     function updateProduct(id, data) {
