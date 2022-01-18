@@ -71,7 +71,7 @@ function List({ match }) {
                             </td>
                         </tr>
                     }
-                    {products && !products.length &&
+                    {products && products.data && !products.data.length &&
                         <tr>
                             <td colSpan="4" className="text-center">
                                 <div className="p-2">No products To Display</div>

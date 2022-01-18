@@ -12,19 +12,18 @@ function AddEdit({ history, match }) {
     
     // form validation rules 
     const validationSchema = Yup.object().shape({
-        // name: Yup.string()
-        //     .required('Name is required'),
-        // detail: Yup.string()
-        //     .required('Detail is required'),
+        name: Yup.string()
+            .required('Name is required'),
+        detail: Yup.string()
+            .required('Detail is required'),
     });
 
     // functions to build form returned by useForm() hook
-    const { register, handleSubmit, reset, setValue, errors, formState } = useForm({
+    const { register, handleSubmit, reset, setValue, setError, errors, formState } = useForm({
         resolver: yupResolver(validationSchema)
     });
 
     function onSubmit(data) {
-        console.log('data = ', data);
         return isAddMode
             ? createProduct(data)
             : updateProduct(id, data);
@@ -36,9 +35,12 @@ function AddEdit({ history, match }) {
                 alertService.success('Product added', { keepAfterRouteChange: true });
                 history.push('.');
             })
-            .catch(err => {
-                console.log('err = ', err.status);
+            .catch(error => {
                 alertService.error;
+                const messages = Object.values(error.response.data.data);
+                if (error.response.status === 422) {
+                    setError('apiError', { messages });
+                }
             });
     }
 
@@ -64,6 +66,9 @@ function AddEdit({ history, match }) {
     return (
         <form onSubmit={handleSubmit(onSubmit)} onReset={reset}>
             <h1>{isAddMode ? 'Add product' : 'Edit product'}</h1>
+            { errors.apiError && errors.apiError.messages.map(err => 
+                <div className="alert alert-danger mt-3 mb-0">{err}</div>
+            )}
             <div className="form-row">
                 <div className="form-group col-7">
                     <label>Name</label>
@@ -84,7 +89,7 @@ function AddEdit({ history, match }) {
                     Save
                 </button>
                 <Link to={isAddMode ? '.' : '..'} className="btn btn-link">Cancel</Link>
-            </div>
+            </div>          
         </form>
     );
 }
