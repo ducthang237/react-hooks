@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from "react-js-pagination";
+import { useTranslation } from 'react-i18next';
 
 import { productService } from '@/services';
 
 function List({ match }) {
     const { path } = match;
     const [products, setProducts] = useState(null);
+
+    const { t } = useTranslation();
 
     const fetchData = (pageNumber = 1) => {
         productService.getAll(pageNumber).then(res => {
@@ -38,14 +41,14 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Products</h1>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add product</Link>
+            <h1>{t('product.products')}</h1>
+            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">{t('product.add_product')}</Link>
             <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th style={{ width: '40%' }}>Name</th>
-                        <th style={{ width: '50%' }}>Detail</th>
-                        <th style={{ width: '10%' }}>Option</th>
+                        <th style={{ width: '40%' }}>{t('product.name')}</th>
+                        <th style={{ width: '50%' }}>{t('product.detail')}</th>
+                        <th style={{ width: '10%' }}>{t('general.option')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,11 +57,11 @@ function List({ match }) {
                             <td>{product.name}</td>
                             <td>{product.detail}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                                <Link to={`${path}/edit/${product.id}`} className="btn btn-sm btn-primary mr-1">Edit</Link>
+                                <Link to={`${path}/edit/${product.id}`} className="btn btn-sm btn-primary mr-1">{t('general.edit')}</Link>
                                 <button onClick={() => deleteProduct(product.id)} className="btn btn-sm btn-danger btn-delete-product" disabled={product.isDeleting}>
                                     {product.isDeleting 
                                         ? <span className="spinner-border spinner-border-sm"></span>
-                                        : <span>Delete</span>
+                                        : <span>{t('general.delete')}</span>
                                     }
                                 </button>
                             </td>

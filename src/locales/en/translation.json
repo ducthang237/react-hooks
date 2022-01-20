@@ -1,0 +1,18 @@
+{
+    "general": {
+        "edit": "Edit",
+        "delete": "Delete",
+        "option": "Option"
+    },
+    "nav": {
+        "home": "Home",
+        "product": "Product",
+        "logout": "Logout"
+    },
+    "product": {
+        "products": "Products",
+        "add_product": "Add Product",
+        "name": "Name",
+        "detail": "Detail"
+    }
+}

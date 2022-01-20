@@ -1,0 +1,18 @@
+{
+    "general": {
+        "edit": "Sửa",
+        "delete": "Xóa",
+        "option": "Tùy chọn"
+    },
+    "nav": {
+        "home": "Trang chủ",
+        "product": "Sản phẩm",
+        "logout": "Đăng xuất"
+    },
+    "product": {
+        "products": "Sản phẩm",
+        "add_product": "Thêm sản phẩm",
+        "name": "Tên sản phẩm",
+        "detail": "Chi tiết"
+    }
+}
