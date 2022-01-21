@@ -13,6 +13,17 @@
         "products": "Sản phẩm",
         "add_product": "Thêm sản phẩm",
         "name": "Tên sản phẩm",
-        "detail": "Chi tiết"
+        "detail": "Chi tiết",
+        "created_at": "Ngày tạo",
+        "created_by": "Người tạo"
+    },
+    "post": {
+        "posts": "Bài viết",
+        "add_post": "Thêm bài viết",
+        "title": "Tiêu đề",
+        "body": "Nội dung",
+        "publish": "Xuất bản",
+        "created_at": "Ngày tạo",
+        "created_by": "Người tạo"
     }
 }

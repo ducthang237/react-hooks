@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
-import { Nav, Alert, Auth, Home, Products } from '@/components';
+import { Nav, Alert, Auth, Home, Products, Posts } from '@/components';
 import PrivateRoute from '../PrivateRoute';
 import { AuthContext } from "../context/auth";
 
@@ -11,7 +11,7 @@ function App() {
     const [authTokens, setAuthTokens] = useState();
   
     const setTokens = (data) => {
-        localStorage.setItem("token", JSON.stringify(data));
+        sessionStorage.setItem("token", JSON.stringify(data));
         setAuthTokens(data);
     }
 
@@ -26,6 +26,7 @@ function App() {
                         <Route path="/auth" component={Auth} />
                         <Route exact path="/" component={Home} />
                         <PrivateRoute path="/products" component={Products} />
+                        <PrivateRoute path="/posts" component={Posts} />
                         <Redirect from="*" to="/" />
                     </Switch>
                 </div>

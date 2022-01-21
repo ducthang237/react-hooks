@@ -7,12 +7,24 @@
     "nav": {
         "home": "Home",
         "product": "Product",
+        "post": "Post",
         "logout": "Logout"
     },
     "product": {
         "products": "Products",
         "add_product": "Add Product",
         "name": "Name",
-        "detail": "Detail"
+        "detail": "Detail",
+        "created_at": "Created At",
+        "created_by": "Created By"
+    },
+    "post": {
+        "posts": "Posts",
+        "add_post": "Add Post",
+        "title": "Title",
+        "body": "Body",
+        "publish": "Publish",
+        "created_at": "Created At",
+        "created_by": "Created By"
     }
 }

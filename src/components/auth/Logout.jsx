@@ -12,7 +12,10 @@ function Logout() {
         authService.logout().then(result => {
             if (result.status === 200) {
                 setAuthTokens();
-                localStorage.removeItem("token");
+                sessionStorage.removeItem("token");
+                sessionStorage.removeItem("userId");
+                sessionStorage.removeItem("language");
+                sessionStorage.removeItem("roles");
                 history.push('/auth/login')
             } else {
                 console.log('Logout failed: ' )

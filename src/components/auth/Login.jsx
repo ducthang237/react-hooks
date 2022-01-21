@@ -21,6 +21,8 @@ function Login(props) {
         authService.login({email, password}).then(result => {
         if (result.status === 200) {
             setAuthTokens(result.data.data.token);
+            sessionStorage.setItem('userId', result.data.data.userId)
+            sessionStorage.setItem('roles', result.data.data.roles.toString())
             setLoggedIn(true);
         } else {
             setIsError(true);
