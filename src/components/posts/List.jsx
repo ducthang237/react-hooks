@@ -10,6 +10,7 @@ function List({ match }) {
     const { path } = match;
     const [posts, setPosts] = useState(null);
     const [isPublished, setIsPublished] = useState(0);
+    const [keyword, setKeyword] = useState('');
 
     const { t } = useTranslation();
 
@@ -53,10 +54,29 @@ function List({ match }) {
         }
     }
 
+    function searchHandle() {
+        console.log('keyword = ', keyword);
+        postService.getByKeyword(keyword).then(res => {
+            console.log('res search = ', res);
+        }).catch(err => console.log('err search = ', err));
+
+        
+    }
+
+    function changeInputHandle(event) {
+        setKeyword(event.target.value);
+    }
+
     return (
         <div>
             <h1>{t('post.posts')}</h1>
             <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">{t('post.add_post')}</Link>
+            <div className="search-block">
+                <input name="search" type="text" className="form-control search-input" placeholder="Search for..."
+                       onChange={(e) => changeInputHandle(e)}></input>
+                <button className="btn btn-primary search-btn" onClick={() => searchHandle()} >Search</button>
+            </div>
+            
             <table className="table table-striped">
                 <thead>
                     <tr>

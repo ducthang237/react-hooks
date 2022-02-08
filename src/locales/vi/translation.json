@@ -2,7 +2,8 @@
     "general": {
         "edit": "Sửa",
         "delete": "Xóa",
-        "option": "Tùy chọn"
+        "option": "Tùy chọn",
+        "search": "Tìm kiếm"
     },
     "nav": {
         "home": "Trang chủ",

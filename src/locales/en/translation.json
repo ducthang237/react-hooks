@@ -2,7 +2,8 @@
     "general": {
         "edit": "Edit",
         "delete": "Delete",
-        "option": "Option"
+        "option": "Option",
+        "search": "Search"
     },
     "nav": {
         "home": "Home",

@@ -11,6 +11,10 @@ function getById(id) {
     return axios.get(`${baseUrl}/${id}`, { headers: authHeader() });
 }
 
+function getByKeyword(keyword) {
+    return axios.post(`${baseUrl}/search`, {keyword}, { headers: authHeader() });
+}
+
 function create(params) {
     return axios.post(baseUrl, params, { headers: authHeader() });
 }
@@ -31,6 +35,7 @@ function _delete(id) {
 export const postService = {
     getAll,
     getById,
+    getByKeyword,
     create,
     update,
     publish,
